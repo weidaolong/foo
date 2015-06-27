@@ -11,9 +11,7 @@
 	default-lazy-init="true">
 
 	<description>Spring公共配置 </description>
-	
-	<context:property-placeholder ignore-resource-not-found="true"
-			location="classpath*:/application.properties" />	
+
           			  
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
 	<context:component-scan base-package="com.wdl.foo">
@@ -41,23 +39,76 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<!-- Tomcat JDBC连接池 -->
-	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		<property name="defaultAutoCommit" value="false" />
-	</bean>
+
+
+
+
+	<!-- production环境 -->
+	<beans profile="production">
+		<context:property-placeholder ignore-resource-not-found="true"
+			location="classpath*:/application.properties" />	
+
+		<!-- 数据源配置,使用应用内的Tomcat JDBC连接池 -->
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="maxActive" value="${jdbc.pool.maxActive}" />
+			<property name="maxIdle" value="${jdbc.pool.maxIdle}" />
+			<property name="minIdle" value="0" />
+			<property name="defaultAutoCommit" value="false" />
+			<!-- 连接Idle10分钟后超时，每1分钟检查一次 -->
+			<property name="timeBetweenEvictionRunsMillis" value="60000" />
+			<property name="minEvictableIdleTimeMillis" value="600000" />
+		</bean>
+	</beans>
 	
-	<!-- 初始化数据结构 -->
-	<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
-		<jdbc:script location="classpath:sql/h2/schema.sql" />
-	</jdbc:initialize-database>
+	<!-- local development环境 -->
+	<beans profile="development">
+		<context:property-placeholder ignore-resource-not-found="true"
+			location="classpath*:/application.properties,
+					  classpath*:/application.development.properties" />	
+
+		<!-- Tomcat JDBC连接池 -->
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="defaultAutoCommit" value="false" />
+		</bean>
+		<!-- 初始化数据结构与默认数据 -->
+		<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+			<jdbc:script location="classpath:sql/mysql/schema.sql" />
+		</jdbc:initialize-database>
+	</beans>
+
 	
+	<!-- unit test环境 -->
+	<beans profile="test">
+		<context:property-placeholder ignore-resource-not-found="true"
+			location="classpath*:/application.properties,
+          			  classpath*:/application.test.properties" />	
+		
+		<!-- Spring Simple连接池 -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+			<property name="driverClass" value="${h2.jdbc.driver}" />
+			<property name="url" value="${h2.jdbc.url}" />
+			<property name="username" value="${h2.jdbc.username}" />
+			<property name="password" value="${h2.jdbc.password}" />	
+		</bean>
+		
+		<!-- 初始化数据结构与默认数据 -->
+		<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+			<jdbc:script location="classpath:sql/h2/schema.sql" />
+			<jdbc:script location="classpath:data/h2/import-data.sql" encoding="UTF-8" />
+		</jdbc:initialize-database>
+	</beans>	
 	
 </beans>

@@ -1,0 +1,1 @@
+insert into ss_team (id, name, master_id) values(1,'Dolphin',1);
