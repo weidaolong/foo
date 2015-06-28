@@ -5,6 +5,8 @@
  *******************************************************************************/
 package com.wdl.foo.web.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +24,8 @@ public class ApiListController {
 	
 	@ResponseBody 
 	@RequestMapping(method = RequestMethod.GET)
-	public Team list() {
-		Team team=service.getTeamWithDetail(1L);
-		System.out.println(team);
+	public List<Team> list() {
+		List<Team> team=service.getTeamWithDetail(1L);
 		return team;
 	}
 }

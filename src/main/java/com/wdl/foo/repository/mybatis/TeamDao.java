@@ -5,6 +5,8 @@
  *******************************************************************************/
 package com.wdl.foo.repository.mybatis;
 
+import java.util.List;
+
 import com.wdl.foo.entity.Team;
 
 /**
@@ -16,5 +18,5 @@ import com.wdl.foo.entity.Team;
 @MyBatisRepository
 public interface TeamDao {
 
-	Team getWithDetail(Long id);
+	List<Team> getWithDetail(Long id);
 }

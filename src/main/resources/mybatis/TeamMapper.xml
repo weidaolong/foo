@@ -13,6 +13,6 @@
 		select t.id as team_id,
 		t.name as team_name
 		from ss_team t
-		where  t.id=#{id}
+		where  t.master_id=#{id}
 	</select>
 </mapper> 
