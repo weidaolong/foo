@@ -29,6 +29,18 @@
 		<property name="typeAliasesPackage" value="com.wdl.foo.entity" />
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml" />
+		<property name="plugins">
+	      <array>
+	        <bean class="com.github.pagehelper.PageHelper">
+	          <property name="properties">
+	            <value>
+	              dialect=${dialect}
+	              reasonable=true
+	            </value>
+	          </property>
+	        </bean>
+	      </array>
+	    </property>
 	</bean>
 	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -89,10 +101,11 @@
 			<property name="password" value="${jdbc.password}" />
 			<property name="defaultAutoCommit" value="false" />
 		</bean>
-		<!-- 初始化数据结构与默认数据 -->
+		<!-- 初始化数据结构与默认数据 
 		<jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
 			<jdbc:script location="classpath:sql/mysql/schema.sql" />
 		</jdbc:initialize-database>
+		-->
 	</beans>
 
 	
