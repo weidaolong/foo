@@ -5,14 +5,13 @@
  *******************************************************************************/
 package com.wdl.foo.web.api;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.Page;
 import com.wdl.foo.entity.Team;
 import com.wdl.foo.service.AccountEffectiveService;
 
@@ -24,8 +23,7 @@ public class ApiListController {
 	
 	@ResponseBody 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Team> list() {
-		List<Team> team=service.getTeamWithDetail(1L);
-		return team;
+	public Page<Team> list() {
+		return service.getTeamWithDetail(1L);
 	}
 }

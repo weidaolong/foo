@@ -5,9 +5,9 @@
  *******************************************************************************/
 package com.wdl.foo.repository.mybatis;
 
-import java.util.List;
-
+import com.github.pagehelper.Page;
 import com.wdl.foo.entity.Team;
+
 
 /**
  * 通过@MapperScannerConfigurer扫描目录中的所有接口, 动态在Spring Context中生成实现.
@@ -18,5 +18,5 @@ import com.wdl.foo.entity.Team;
 @MyBatisRepository
 public interface TeamDao {
 
-	List<Team> getWithDetail(Long id);
+	Page<Team> getWithDetail(Long id);
 }
