@@ -8,11 +8,10 @@ package com.wdl.foo.repository.mybatis;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import com.wdl.foo.SpringContextTestCase;
 import com.wdl.foo.service.AccountEffectiveService;
 
 
@@ -26,10 +25,9 @@ import com.wdl.foo.service.AccountEffectiveService;
 
 
 @DirtiesContext
-@ActiveProfiles("development")
 @ContextConfiguration(locations = { "/applicationContext.xml" })
 @TransactionConfiguration(transactionManager="transactionManager",defaultRollback=false)
-public class TeamDaoTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class TeamDaoTest extends SpringContextTestCase {
 
 	@Autowired
 	private AccountEffectiveService teamDao;

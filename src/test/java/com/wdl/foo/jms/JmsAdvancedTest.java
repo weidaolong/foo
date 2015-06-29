@@ -19,10 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
+import com.wdl.foo.SpringContextTestCase;
 import com.wdl.foo.entity.User;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageListener;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageProducer;
@@ -30,9 +29,8 @@ import com.wdl.foo.modules.utils.Threads;
 import com.wdl.foo.modules.utils.log.LogbackListAppender;
 
 @DirtiesContext
-@ActiveProfiles("development")
 @ContextConfiguration(locations = { "/applicationContext.xml", "/jms/applicationContext-jms-advanced.xml" })
-public class JmsAdvancedTest extends AbstractJUnit4SpringContextTests {
+public class JmsAdvancedTest extends SpringContextTestCase {
 
 	@Autowired
 	private AdvancedNotifyMessageProducer notifyMessageProducer;
