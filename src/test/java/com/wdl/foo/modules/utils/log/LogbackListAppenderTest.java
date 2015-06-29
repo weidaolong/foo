@@ -5,11 +5,13 @@
  *******************************************************************************/
 package com.wdl.foo.modules.utils.log;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.wdl.foo.utils.log.LogbackListAppender;
 
 public class LogbackListAppenderTest {
 
@@ -65,12 +67,12 @@ public class LogbackListAppenderTest {
 
 		// name
 		appender.clearLogs();
-		appender.addToLogger("org.springside.modules.test.log");
+		appender.addToLogger("com.wdl.foo.modules.utils.log");
 		logger.warn(testString);
 		assertThat(appender.getFirstLog()).isNotNull();
 
 		appender.clearLogs();
-		appender.removeFromLogger("org.springside.modules.test.log");
+		appender.removeFromLogger("com.wdl.foo.modules.utils.log");
 		logger.warn(testString);
 		assertThat(appender.getFirstLog()).isNull();
 	}

@@ -26,7 +26,7 @@ import com.wdl.foo.entity.User;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageListener;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageProducer;
 import com.wdl.foo.modules.utils.Threads;
-import com.wdl.foo.modules.utils.log.LogbackListAppender;
+import com.wdl.foo.utils.log.LogbackListAppender;
 
 @DirtiesContext
 @ContextConfiguration(locations = { "/applicationContext.xml", "/jms/applicationContext-jms-advanced.xml" })
@@ -43,11 +43,15 @@ public class JmsAdvancedTest extends SpringContextTestCase {
 
 	@Test
 	public void queueMessage() {
+		Threads.sleep(1000);
 		LogbackListAppender appender = new LogbackListAppender();
 		appender.addToLogger(AdvancedNotifyMessageListener.class);
+
 		User user = new User();
 		user.setName("calvin");
+
 		notifyMessageProducer.sendQueue(user);
+		Threads.sleep(1000);
 		assertThat(appender.getFirstMessage()).isEqualTo(
 				"UserName:calvin, ObjectType:user");
 	}
@@ -64,11 +68,15 @@ public class JmsAdvancedTest extends SpringContextTestCase {
 		notifyMessageProducer.sendTopic(user);
 		Threads.sleep(1000);
 		assertThat(appender.getFirstMessage()).isEqualTo(
-				"UserName:calvin,ObjectType:user");
+				"UserName:calvin, ObjectType:user");
 	}
 
 	@Test
 	public void topicMessageWithWrongType() {
+		Threads.sleep(1000);
+		LogbackListAppender appender = new LogbackListAppender();
+		appender.addToLogger(AdvancedNotifyMessageListener.class);
+
 		advancedJmsTemplate.send(advancedNotifyTopic, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
@@ -78,5 +86,8 @@ public class JmsAdvancedTest extends SpringContextTestCase {
 				return message;
 			}
 		});
+
+		Threads.sleep(1000);
+		assertThat(appender.isEmpty()).isTrue();
 	}
 }

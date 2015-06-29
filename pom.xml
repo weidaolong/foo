@@ -323,6 +323,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<argLine>-Xmx256M</argLine>
+					<excludes>
+						<exclude>**/SpringContextTestCase.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<!-- 使用tomcat7容器 -->

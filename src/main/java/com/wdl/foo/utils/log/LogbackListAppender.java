@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package com.wdl.foo.modules.utils.log;
+package com.wdl.foo.utils.log;
 
 import java.util.List;
 
