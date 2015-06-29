@@ -17,12 +17,12 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="com.wdl.foo" level="DEBUG" />
+	<logger name="com.wdl.foo" level="INFO" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="DEBUG"/>
 
-	<root level="DEBUG">
+	<root level="WARN">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>
