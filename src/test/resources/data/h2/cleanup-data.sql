@@ -1,1 +1,1 @@
-delete from ss_team;
+delete from team;

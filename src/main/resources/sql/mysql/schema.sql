@@ -1,6 +1,6 @@
-drop table if exists ss_team;
+drop table if exists team;
 
-create table ss_team (
+create table team (
   	id bigint auto_increment,
 	name varchar(255) not null,
 	master_id bigint,

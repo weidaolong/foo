@@ -12,7 +12,7 @@
 	<select id="getWithDetail" parameterType="long" resultMap="teamDetailMap">
 		select t.id as team_id,
 		t.name as team_name
-		from ss_team t
+		from team t
 		where  t.master_id=#{id}
 	</select>
 </mapper> 
