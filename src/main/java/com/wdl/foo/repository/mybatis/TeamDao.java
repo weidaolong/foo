@@ -5,7 +5,7 @@
  *******************************************************************************/
 package com.wdl.foo.repository.mybatis;
 
-import com.github.pagehelper.Page;
+import com.wdl.foo.common.persistence.CrudDao;
 import com.wdl.foo.entity.Team;
 
 
@@ -16,7 +16,6 @@ import com.wdl.foo.entity.Team;
  * @author calvin
  */
 @MyBatisRepository
-public interface TeamDao {
+public interface TeamDao extends CrudDao<Team>{
 
-	Page<Team> getWithDetail(Long id);
 }

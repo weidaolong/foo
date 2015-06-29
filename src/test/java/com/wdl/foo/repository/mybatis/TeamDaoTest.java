@@ -11,7 +11,9 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import com.github.pagehelper.Page;
 import com.wdl.foo.SpringContextTestCase;
+import com.wdl.foo.entity.Team;
 import com.wdl.foo.service.AccountEffectiveService;
 
 
@@ -33,6 +35,12 @@ public class TeamDaoTest extends SpringContextTestCase {
 	private AccountEffectiveService teamDao;
 
 	@Test
-	public void getTeamWithDetail() throws Exception {}
+	public void getTeamWithDetail() throws Exception {
+		Page<Team> page=teamDao.get(1L);
+		for(Team e:page.getResult()){
+			System.out.println(e.getName());
+		}
+		
+	}
 	
 }

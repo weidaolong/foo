@@ -24,6 +24,6 @@ public class ApiListController {
 	@ResponseBody 
 	@RequestMapping(method = RequestMethod.GET)
 	public Page<Team> list() {
-		return service.getTeamWithDetail(1L);
+		return service.get(1L);
 	}
 }

@@ -5,9 +5,9 @@
  *******************************************************************************/
 package com.wdl.foo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.HashMap;
+
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -15,19 +15,17 @@ import com.wdl.foo.entity.Team;
 import com.wdl.foo.repository.mybatis.TeamDao;
 
 @Component
-@Transactional
-public class AccountEffectiveService {
-	@Autowired
-	private TeamDao teamDao;
-
+public class AccountEffectiveService extends CrudService<TeamDao, Team> {
 	/**
 	 * 分页
 	 * @param id
 	 * @return
 	 */
-	public Page<Team> getTeamWithDetail(Long id) {
+	public Page<Team> get(Long id) {
 		PageHelper.startPage(0, 10);
-		return teamDao.getWithDetail(id);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("id", id);
+		return dao.findPage(map);
 	}
 
 }
