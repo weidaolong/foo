@@ -26,7 +26,7 @@ import com.wdl.foo.entity.User;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageListener;
 import com.wdl.foo.jms.advanced.AdvancedNotifyMessageProducer;
 import com.wdl.foo.modules.utils.Threads;
-import com.wdl.foo.utils.log.LogbackListAppender;
+import com.wdl.foo.modules.utils.log.LogbackListAppender;
 
 @DirtiesContext
 @ContextConfiguration(locations = { "/applicationContext.xml", "/jms/applicationContext-jms-advanced.xml" })
