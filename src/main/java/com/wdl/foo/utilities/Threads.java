@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package com.wdl.foo.modules.utils;
+package com.wdl.foo.utilities;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadFactory;
