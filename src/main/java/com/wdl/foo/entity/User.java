@@ -12,6 +12,7 @@ package com.wdl.foo.entity;
  * @author calvin
  */
 public class User  {
+	private Long id;
 	private String loginName;
 	private String plainPassword;
 	private String password;
@@ -75,5 +76,12 @@ public class User  {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

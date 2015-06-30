@@ -42,11 +42,6 @@
 			<jdbc.driver.version>5.1.22</jdbc.driver.version> -->
 	</properties>
 
-	<prerequisites>
-		<maven>3.0.0</maven>
-	</prerequisites>
-
-
 	<!-- 依赖项定义 -->
 	<dependencies>
 		<dependency>
@@ -270,7 +265,23 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		
+		<!-- SECURITY begin -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<!-- SECURITY end -->
 		
 		
       <dependency>
@@ -297,6 +308,14 @@
 	        <version>1.3.1b</version>
 	        <scope>test</scope>
 	      </dependency>
+		<!-- 解决页面报错 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+			<version>2.0</version>
+		</dependency>
+	      
 	</dependencies>
 
 
