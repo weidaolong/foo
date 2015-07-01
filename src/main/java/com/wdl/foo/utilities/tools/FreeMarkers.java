@@ -13,7 +13,7 @@ import java.util.Map;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 
-import com.wdl.foo.utils.Exceptions;
+import com.wdl.foo.modules.utils.Exceptions;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

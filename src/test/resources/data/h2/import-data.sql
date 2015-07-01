@@ -1,1 +1,0 @@
-insert into team (id, name, master_id) values(1,'Dolphin',1);

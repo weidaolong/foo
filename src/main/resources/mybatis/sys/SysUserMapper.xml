@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.wdl.foo.repository.mybatis.sys.SysUserDao">
+	<resultMap id="sysUserMap" type="SysUser">
+		<id property="id" column="id" />
+		<result property="loginName" column="login_name" />
+		<result property="name" column="login_name" />
+		<result property="password" column="password" />
+		<result property="salt" column="login_name" />
+	</resultMap>
+
+	<!-- 获取部门详细信息, 输出用resultMap关联嵌套对象 -->
+	<select id="findByLoginName" parameterType="String" resultMap="sysUserMap">
+		select t.*
+		from Sys_User t
+		where  t.login_name=#{loginName}
+	</select>
+	
+	<select id="get" parameterType="int" resultType="hashmap">
+	  SELECT * FROM SysUser WHERE id = #{id}
+	</select>
+</mapper> 

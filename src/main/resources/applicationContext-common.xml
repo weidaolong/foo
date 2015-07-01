@@ -4,4 +4,6 @@
 	
 	<import resource="jms/applicationContext-jms-advanced.xml" />
 	<import resource="email/applicationContext-email.xml" />
+	<import resource="redis/applicationContext-redis.xml" />
+	<import resource="security/applicationContext-shiro.xml" />
 </beans>
