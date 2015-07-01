@@ -7,6 +7,9 @@
 
 	<description>Shiro安全配置</description>
 
+
+
+
 	<!-- Shiro's main business-tier object for web-enabled applications -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"> 
 		<!-- <property name="sessionManager" ref="sessionManager"/> -->
@@ -32,7 +35,7 @@
 	</bean>      
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
 	<bean id="shiroDbRealm" class="com.wdl.foo.modules.shiro.service.ShiroDbRealm">
-		<property name="sysUserService" ref="sysUserService"/>
+		<property name="accountService" ref="accountService"/>
 	</bean>
 	
 	<bean id="chainFilterBuff"   class="com.wdl.foo.modules.shiro.service.ChainFilterBuff">

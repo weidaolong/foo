@@ -5,7 +5,7 @@
 <mapper namespace="com.wdl.foo.repository.mybatis.sys.SysUserDao">
 	<resultMap id="sysUserMap" type="SysUser">
 		<id property="id" column="id" />
-		<result property="loginName" column="login_name" />
+		<result property="loginName" column="logins_name" />
 		<result property="name" column="login_name" />
 		<result property="password" column="password" />
 		<result property="salt" column="login_name" />
@@ -18,7 +18,7 @@
 		where  t.login_name=#{loginName}
 	</select>
 	
-	<select id="get" parameterType="int" resultType="hashmap">
-	  SELECT * FROM SysUser WHERE id = #{id}
-	</select>
+	<insert id="insert" parameterType="com.wdl.foo.entity.sys.SysUser" flushCache="true" statementType="PREPARED" >
+		insert into `sys_user` ( `logins_name`, `name`, `password`, `salt`, `roles`) values(#{loginName},#{name},#{password},#{salt},#{roles});
+	</insert>
 </mapper> 

@@ -2,16 +2,16 @@ package com.wdl.foo.service.sys;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.wdl.foo.entity.sys.SysUser;
 import com.wdl.foo.modules.security.utils.Digests;
 import com.wdl.foo.modules.utils.Encodes;
 import com.wdl.foo.repository.mybatis.sys.SysUserDao;
-
-@Component
-public class SysUserService{
-	
+@Service
+@Transactional
+public class AccountService{
 	@Autowired
 	private SysUserDao dao;
 	public static final String HASH_ALGORITHM = "SHA-1";
@@ -22,6 +22,11 @@ public class SysUserService{
 		return dao.findByLoginName(loginName);
 	}
 	
+	public void registerUser(SysUser user) {
+		entryptPassword(user);
+		user.setRoles("user");
+		dao.insert(user);
+	}
 	
 	/**
 	 * 设定安全的密码，生成随机的salt并经过1024次 sha-1 hash
@@ -39,4 +44,15 @@ public class SysUserService{
 			entryptPassword(user);
 		}
 	}
+
+	public SysUserDao getDao() {
+		return dao;
+	}
+
+	public void setDao(SysUserDao dao) {
+		this.dao = dao;
+	}
+	
+	
+	
 }

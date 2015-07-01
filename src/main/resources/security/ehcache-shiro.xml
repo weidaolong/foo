@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <ehcache updateCheck="false" name="shiroCache">
 	<!-- http://ehcache.org/ehcache.xml -->
-   <defaultCache
+    <defaultCache
             maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="120"

@@ -5,6 +5,7 @@
  *******************************************************************************/
 package com.wdl.foo.entity.sys;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +22,7 @@ public class SysUser  {
 	private String email;
 	private String status;
 	private String roles;
+	private Date registerDate;
 	public String getLoginName() {
 		return loginName;
 	}
@@ -97,4 +99,13 @@ public class SysUser  {
 		// 角色列表在数据库中实际以逗号分隔字符串存储，因此返回不能修改的List.
 		return ImmutableList.copyOf(StringUtils.split(roles, ","));
 	}
+
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
+	
 }

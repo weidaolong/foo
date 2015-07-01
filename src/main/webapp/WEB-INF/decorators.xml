@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<decorators defaultdir="/WEB-INF/layouts/">
+<decorators defaultdir="/WEB-INF/layouts">
 	<excludes>
 		<pattern>/static/*</pattern>
-		<pattern>/api/*</pattern>
-	</excludes>
-	
+	</excludes>	
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
+	<decorator name="basic" page="basic.jsp">
+		<pattern>/login</pattern>
+	</decorator>
+	
 </decorators>

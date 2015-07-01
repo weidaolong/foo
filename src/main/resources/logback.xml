@@ -20,9 +20,9 @@
 	<logger name="com.wdl.foo" level="DEBUG" />
 
 	<!--log4jdbc -->
-	<logger name="jdbc.sqltiming" level="INFO"/>
+	<logger name="jdbc.sqltiming" level="DEBUG"/>
 
-	<root level="DEBUG">
+	<root level="INFO">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>
