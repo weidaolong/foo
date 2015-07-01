@@ -24,18 +24,18 @@
         </property>
 	</bean>
 	
-	<bean id="customShiroSessionDAO" class="com.facedops.note.shiro.dao.CustomShiroSessionDAO">  
+	<bean id="customShiroSessionDAO" class="com.wdl.foo.shiro.dao.CustomShiroSessionDAO">  
     	<property name="shiroSessionRepository" ref="jedisShiroSessionRepository" />  
 	</bean>  
-	<bean id="customSessionListener" class="com.facedops.note.shiro.listener.CustomSessionListener">  
+	<bean id="customSessionListener" class="com.wdl.foo.shiro.listener.CustomSessionListener">  
     	<property name="shiroSessionRepository" ref="jedisShiroSessionRepository" />  
 	</bean>      
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDbRealm" class="com.facedops.note.shiro.service.ShiroDbRealm">
+	<bean id="shiroDbRealm" class="com.wdl.foo.shiro.service.ShiroDbRealm">
 		<property name="sysService" ref="sysService"/>
 	</bean>
 	
-	<bean id="chainFilterBuff"   class="com.facedops.note.shiro.service.ChainFilterBuff">
+	<bean id="chainFilterBuff"   class="com.wdl.foo.shiro.service.ChainFilterBuff">
 	    <property name="filterChainDefinitions">
 	    <value>
 			/login = authc
@@ -79,16 +79,16 @@
 	</bean>
 	
     <!-- custom save session by redis class impl ShiroSessionRepository interface -->
-    <bean id="jedisShiroSessionRepository" class="com.facedops.note.shiro.dao.impl.JedisShiroSessionRepository">
+    <bean id="jedisShiroSessionRepository" class="com.wdl.foo.shiro.dao.impl.JedisShiroSessionRepository">
         <property name="jedisManager" ref="jedisManager" />
     </bean>
 
 
-	<bean id="customShiroCacheManager" class="com.facedops.note.shiro.cache.CustomShiroCacheManager">  
+	<bean id="customShiroCacheManager" class="com.wdl.foo.shiro.cache.CustomShiroCacheManager">  
 	    <property name="shiroCacheManager" ref="jedisShiroCacheManager" />  
 	</bean>  
 	      
-	<bean id="jedisShiroCacheManager" class="com.facedops.note.shiro.cache.JedisShiroCacheManager" >
+	<bean id="jedisShiroCacheManager" class="com.wdl.foo.shiro.cache.JedisShiroCacheManager" >
 		<property name="JedisManager" ref="jedisManager"/>
 	</bean> 
 	
