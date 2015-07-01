@@ -12,9 +12,9 @@
 
 	<!-- Shiro's main business-tier object for web-enabled applications -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"> 
-		<!-- <property name="sessionManager" ref="sessionManager"/> -->
+		<property name="sessionManager" ref="sessionManager"/>
 		<property name="realm" ref="shiroDbRealm" />
-		<!-- <property name="cacheManager" ref="customShiroCacheManager" /> -->
+		<property name="cacheManager" ref="customShiroCacheManager" />
 	</bean>
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
 		<property name="globalSessionTimeout" value="1200000" />

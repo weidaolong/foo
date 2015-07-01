@@ -23,6 +23,7 @@ import com.wdl.foo.modules.utils.Encodes;
 import com.wdl.foo.service.sys.AccountService;
 
 public class ShiroDbRealm extends AuthorizingRealm{
+	
 	protected AccountService accountService;
 	
 	/**

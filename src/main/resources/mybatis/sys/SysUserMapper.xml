@@ -5,10 +5,11 @@
 <mapper namespace="com.wdl.foo.repository.mybatis.sys.SysUserDao">
 	<resultMap id="sysUserMap" type="SysUser">
 		<id property="id" column="id" />
-		<result property="loginName" column="logins_name" />
+		<result property="loginName" column="login_name" />
 		<result property="name" column="login_name" />
 		<result property="password" column="password" />
-		<result property="salt" column="login_name" />
+		<result property="salt" column="salt" />
+		<result property="registerDate" column="register_date" />
 	</resultMap>
 
 	<!-- 获取部门详细信息, 输出用resultMap关联嵌套对象 -->
@@ -18,7 +19,7 @@
 		where  t.login_name=#{loginName}
 	</select>
 	
-	<insert id="insert" parameterType="com.wdl.foo.entity.sys.SysUser" flushCache="true" statementType="PREPARED" >
-		insert into `sys_user` ( `logins_name`, `name`, `password`, `salt`, `roles`) values(#{loginName},#{name},#{password},#{salt},#{roles});
+	<insert id="insert" parameterType="com.wdl.foo.entity.sys.SysUser">
+		insert into `sys_user` ( `login_name`, `name`, `password`, `salt`, `roles`,`register_date`) values(#{loginName},#{name},#{password},#{salt},#{roles},#{registerDate});
 	</insert>
 </mapper> 

@@ -21,9 +21,9 @@ public class SysUserDaoTest extends MybatisContextTestCase{
 	@Test
 	public void registerUser(){
 		SysUser user=new SysUser();
-		user.setName("foo1");
-		user.setPlainPassword("foo1");
-		user.setLoginName("foo1");
+		user.setName("zhangsan");
+		user.setPlainPassword("zhangsan");
+		user.setLoginName("zhangsan");
 		user.setRegisterDate(new Date());
 		service.registerUser(user);
 		

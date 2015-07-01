@@ -13,19 +13,19 @@ import com.wdl.foo.repository.mybatis.sys.SysUserDao;
 @Transactional
 public class AccountService{
 	@Autowired
-	private SysUserDao dao;
+	private SysUserDao sysUserDao;
 	public static final String HASH_ALGORITHM = "SHA-1";
 	public static final int HASH_INTERATIONS = 1024;
 	private static final int SALT_SIZE = 8;
 	
 	public SysUser findByLoginName(String loginName){
-		return dao.findByLoginName(loginName);
+		return sysUserDao.findByLoginName(loginName);
 	}
 	
 	public void registerUser(SysUser user) {
 		entryptPassword(user);
 		user.setRoles("user");
-		dao.insert(user);
+		sysUserDao.insert(user);
 	}
 	
 	/**
@@ -46,11 +46,11 @@ public class AccountService{
 	}
 
 	public SysUserDao getDao() {
-		return dao;
+		return sysUserDao;
 	}
 
 	public void setDao(SysUserDao dao) {
-		this.dao = dao;
+		this.sysUserDao = dao;
 	}
 	
 	
