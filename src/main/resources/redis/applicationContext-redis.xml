@@ -9,6 +9,13 @@
     </bean>
 
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg index="0" value="${redis.url}"/>
+        <constructor-arg index="0" ref="poolConfig"/>
+        <constructor-arg index="1" value="${redis.url}"/>
     </bean>
+    
+    <bean id="poolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+		<property name="maxTotal" value="${redis.pool.maxTotal}" />
+		<property name="maxIdle" value="${redis.pool.maxIdle}" />
+		<property name="minIdle" value="${redis.pool.minIdle}" />
+     </bean>
 </beans>

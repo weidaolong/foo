@@ -20,7 +20,6 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-
 import com.wdl.foo.SpringContextTestCase;
 import com.wdl.foo.entity.sys.SysUser;
 import com.wdl.foo.modules.jms.advanced.AdvancedNotifyMessageListener;
