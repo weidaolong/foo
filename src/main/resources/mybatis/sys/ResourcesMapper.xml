@@ -3,13 +3,18 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
 <mapper namespace="com.wdl.foo.repository.mybatis.sys.ResourcesDao">
-	<resultMap id="resourcesMap" type="map">
+	<resultMap id="resourcesMap" type="SysResources">
 		<id property="id" column="id" />
+		<id property="parent_id" column="parentId" />
+		<id property="name" column="name" />
+		<id property="url" column="url" />
+		<id property="resourcesType" column="isShow" />
+		<id property="remarks" column="remarks" />
 	</resultMap>
 
 	<!-- 获取部门详细信息, 输出用resultMap关联嵌套对象 -->
-	<select id="findAllResources" resultMap="resourcesMap">
-		SELECT * FROM sys_menu;
+	<select id="findAllResources" resultMap="resourcesMap" parameterType="map">
+		SELECT * FROM SYS_RESOURCES WHERE  RESOURCES_TYPE=#{resourcesType} AND PARENT_ID=#{parentId}
 	</select>
 
 </mapper> 

@@ -3,7 +3,10 @@
 	<excludes>
 		<pattern>/static/*</pattern>
 	</excludes>	
-	<decorator name="basic" page="basic.jsp">
+	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
+	</decorator>
+	<decorator name="basic" page="basic.jsp">
+		<pattern>/login</pattern>
 	</decorator>
 </decorators>
