@@ -1,12 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/taglibs.jsp"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>主页</title>
 </head>
-<body>
+<body> 
+<%
+Map categorys =(Map) session.getAttribute("categorys");
+%>
+<c:forEach items="${categorys}" var="item">
+
+	${item.key }
+	${item.value }
+
+</c:forEach>
+
 
 </body>
 </html>

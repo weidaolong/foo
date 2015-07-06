@@ -61,8 +61,8 @@ public class RedisKeyTest extends RedisTestCase {
 					Jedis jedis = getJedis();
 					long start = System.currentTimeMillis();
 					Transaction tx = jedis.multi();
-					for (int j = 1; j < 100; j++) {
-						tx.set("t "+ threadName+ j, "t" + j);
+					for (int j = 0; j < 100; j++) {
+						tx.set("t "+ threadName+ "="+j, "t" + j);
 					}
 					List<Object> results = tx.exec();
 					long end = System.currentTimeMillis();

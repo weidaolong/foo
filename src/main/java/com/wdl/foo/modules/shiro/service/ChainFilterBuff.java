@@ -1,5 +1,8 @@
 package com.wdl.foo.modules.shiro.service;
 
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.config.Ini.Section;
 import org.slf4j.Logger;
@@ -18,9 +21,15 @@ public class ChainFilterBuff implements FactoryBean<Ini.Section> {
 	    Ini.Section section = ini.getSection(Ini.DEFAULT_SECTION_NAME);
 	    
 	    
-//	    section.put("/**", "authc, roles[admin]");
+//	    section.put("/**", "authc, roles[admin,user], perms[file:edit]");
 	    logger.info("资源权限加载完成");
-	    logger.info(filterChainDefinitions);
+	    Iterator<Entry<String, String>> entries=section.entrySet().iterator();
+        while(entries.hasNext()){  
+            Entry<String, String> me = entries.next();  
+            String key = me.getKey();  
+            String value = me.getValue();  
+            logger.info(key+"="+value);       
+        } 
 		return section;
 	}
 
