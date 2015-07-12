@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>主页</title>
+<title>就差你</title>
     <link href="${ctx}/static/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 </head>
 <body> 

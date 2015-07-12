@@ -60,7 +60,7 @@
          	<util:map>
          	</util:map>
          </property>  
-		<property name="successUrl" value="" />
+		<property name="successUrl" value="/" />
 		<property name="filterChainDefinitionMap" ref="chainFilterBuff"/>
 	</bean>
 	

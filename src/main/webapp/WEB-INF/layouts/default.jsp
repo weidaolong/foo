@@ -13,7 +13,7 @@
     <meta name="author" content="">
 
     <title>NOTE ● <sitemesh:title/></title>
-    
+    <link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
     <link href="${ctx}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="${ctx}/static/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
